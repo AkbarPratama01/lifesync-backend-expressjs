@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const todolistRoutes = require("./routes/todolistRoutes");
+const goalRoutes = require("./routes/goalRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,10 @@ app.use('/auth', authRoutes);
 // Rute todolist
 app.use("/api/todolist", todolistRoutes);
 
+// Rute goal
+app.use("/api/goal", goalRoutes);
+
+// Middleware untuk logging
 app.use((req, res, next) => {
     console.log('Request Method:', req.method);
     console.log('Request URL:', req.url);
